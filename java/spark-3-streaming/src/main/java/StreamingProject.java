@@ -48,8 +48,22 @@ public final class StreamingProject {
         JavaPairDStream<String, Integer> windowedWordCounts = wordCounts.reduceByKeyAndWindow((i1, i2) -> i1 + i2, Durations.seconds(30), Durations.seconds(10));
 
         wordCounts.print();
+        
+        //使用foreachRDD循环输出计算结果
+        // dstream.foreachRDD(rdd -> {
+        //     rdd.foreachPartition(partitionOfRecords -> {
+        //       // ConnectionPool is a static, lazily initialized pool of connections
+        //       Connection connection = ConnectionPool.getConnection();
+        //       while (partitionOfRecords.hasNext()) {
+        //         connection.send(partitionOfRecords.next());
+        //       }
+        //       ConnectionPool.returnConnection(connection); // return to the pool for future reuse
+        //     });
+        //   });
+
         System.out.println("Window Output");
         windowedWordCounts.print();
+
         ssc.start();
         ssc.awaitTermination();
 
