@@ -30,7 +30,7 @@ public final class StreamingProject {
         }
       
         // Create the context with a 1 second batch size
-        SparkConf sparkConf = new SparkConf().setMaster("local[2]").setAppName("NetworkWordCount");
+        SparkConf sparkConf = new SparkConf().setMaster("local[4]").setAppName("StreamingProject");
         JavaStreamingContext ssc = new JavaStreamingContext(sparkConf, Durations.seconds(1));
 
 
