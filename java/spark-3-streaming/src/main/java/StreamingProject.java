@@ -47,6 +47,13 @@ public final class StreamingProject {
         // Reduce last 30 seconds of data, every 10 seconds
         JavaPairDStream<String, Integer> windowedWordCounts = wordCounts.reduceByKeyAndWindow((i1, i2) -> i1 + i2, Durations.seconds(30), Durations.seconds(10));
 
+        //遍历输出RDD中的内容
+        words.foreachRDD(rdd->{
+            rdd.foreach(f->{
+                System.out.println("Foreach RDD Output: " + f);
+            });
+        });
+
         wordCounts.print();
         
         //使用foreachRDD循环输出计算结果
