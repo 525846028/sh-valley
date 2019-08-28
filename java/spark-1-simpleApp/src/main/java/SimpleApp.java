@@ -20,6 +20,8 @@ public class SimpleApp {
         //     }
         // }).count();
 
+        
+
         long numYes = logData.filter((FilterFunction<String>) s->s.contains("yes")).count();
         System.out.println("Lines with no : " + numNos + ", with yes : " + numYes);
 
