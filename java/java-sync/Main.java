@@ -2,6 +2,9 @@
 
 // 测试synchronized控制线程同步问题
 // 2019-9-3
+// Synchronized 锁定的是对象，而不是代码段
+// javac Main.java
+// java Main
 
 class Sync{
     public synchronized void test(){
@@ -16,16 +19,24 @@ class Sync{
 }
 
 class MyThread extends Thread{
+    private Sync sync;
+
+    public MyThread(Sync sync){
+        this.sync = sync;
+    }
+
     public void run(){
-        Sync sync = new Sync();
+        // Sync sync = new Sync();
         sync.test();
     }
 }
 
 public class Main{
     public static void main(String[] args){
+        Sync sync = new Sync();
+
         for(int i = 0; i<3; i++){
-            Thread thread = new MyThread();
+            Thread thread = new MyThread(sync);
             thread.start();
         }
     }
