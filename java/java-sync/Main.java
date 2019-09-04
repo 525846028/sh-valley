@@ -33,6 +33,8 @@ class MyThread extends Thread{
 
 public class Main{
     public static void main(String[] args){
+        System.out.println(System.getProperty("java.class.path"));
+
         Sync sync = new Sync();
 
         for(int i = 0; i<3; i++){
