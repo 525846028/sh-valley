@@ -1,0 +1,26 @@
+<project>
+  <groupId>com.edulinks</groupId>
+  <artifactId>log4j-example</artifactId>
+  <modelVersion>4.0.0</modelVersion>
+  <name>Log4j Example</name>
+  <packaging>jar</packaging>
+  <version>1.0</version>
+  <properties>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+  </properties>
+  <dependencies>
+    <dependency> <!-- Spark dependency -->
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <version>1.7.22</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency> <!-- Spark dependency -->
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-log4j12</artifactId>
+      <version>1.7.22</version>
+      <scope>provided</scope>
+    </dependency>
+  </dependencies>
+</project>
