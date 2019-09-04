@@ -39,7 +39,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>com.edulinks.baseline</mainClass>
+                            <mainClass>com.edulinks.Baseline</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
