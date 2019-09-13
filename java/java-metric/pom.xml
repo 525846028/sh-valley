@@ -37,7 +37,7 @@
                     </excludes>
                     <archive>
                         <manifest>
-                            <mainClass>Metric</mainClass>
+                            <mainClass>cn.edulinks.Metric</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

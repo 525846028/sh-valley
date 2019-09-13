@@ -1,4 +1,5 @@
 // package main.java;
+package cn.edulinks;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -20,12 +21,12 @@ public class GaugeExample {
         stringList.add(input);
     }
 
-    public static void main(String[] args) throws InterruptedException{
+    public static void run(){
         ConsoleReporter.enable(1, TimeUnit.SECONDS);
         GaugeExample ge = new GaugeExample();
         for(int i = 0; i < 10; i++){
             ge.inputElement(String.valueOf(i));
-            Thread.sleep(1000);
+            // Thread.sleep(1000);
         }
     }
 }
