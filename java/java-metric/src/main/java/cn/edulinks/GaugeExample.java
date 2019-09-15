@@ -28,6 +28,8 @@ public class GaugeExample {
         for(int i = 0; i < 10; i++){
             try {
                 ge.inputElement(String.valueOf(i));
+                System.out.println(String.valueOf(i));
+                System.out.println(ge.stringList.size());
                 Thread.sleep(1000);    
             }catch(Exception e){
                 e.printStackTrace();
