@@ -22,6 +22,7 @@ public class GaugeExample {
     }
 
     public static void run(){
+        System.out.println("GaugeExample running...");
         ConsoleReporter.enable(1, TimeUnit.SECONDS);
         GaugeExample ge = new GaugeExample();
         for(int i = 0; i < 10; i++){
