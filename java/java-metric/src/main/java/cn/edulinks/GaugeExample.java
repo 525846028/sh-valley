@@ -27,7 +27,7 @@ public class GaugeExample {
         GaugeExample ge = new GaugeExample();
         for(int i = 0; i < 10; i++){
             ge.inputElement(String.valueOf(i));
-            // Thread.sleep(1000);
+            Thread.sleep(1000);
         }
     }
 }
