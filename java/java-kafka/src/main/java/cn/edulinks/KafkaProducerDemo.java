@@ -3,6 +3,7 @@
 package cn.edulinks;
 
 import java.util.*;
+import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.kafka.clients.producer.*;

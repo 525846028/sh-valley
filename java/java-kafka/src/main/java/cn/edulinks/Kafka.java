@@ -6,5 +6,7 @@ public class Kafka {
 
         KafkaProducerDemo kp = new KafkaProducerDemo();
         kp.run();
+
+        kp.async_send();
     }
 }
