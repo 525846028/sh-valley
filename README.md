@@ -1,6 +1,8 @@
-# sh-valley
+# Share Valley 共享山谷
 
-A valley with many shells.
+This repository is used to keep my learning progress. Welcome cotact me to get more points.
+
+这个仓库用来记录自己学习新内容的笔记，包括但不限于shell、java、python等等。欢迎大家与我一起沟通讨论。
 
 # Contact
 
