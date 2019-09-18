@@ -14,6 +14,7 @@ public class KafkaProducerDemo {
     private final static String TOPIC = "tst";
     private final static String BOOTSTRAP_SERVERS = "localhost:9092";
 
+    // 同步发送数据到Kafka
     public void run(){
         System.out.println("Kafka Producer Running.");
 
@@ -45,7 +46,7 @@ public class KafkaProducerDemo {
         }
     }
 
-    // 异步发送数据到
+    // 异步发送数据到Kafka
     public void async_send(){
         System.out.println("Kafka Async Producer Running.");
 
