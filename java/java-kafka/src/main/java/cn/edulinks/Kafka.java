@@ -32,7 +32,11 @@ public class Kafka {
                 case "consumer":
                     try {
                         KafkaConsumerDemo kc = new KafkaConsumerDemo();
-                        kc.run();    
+                        //consume continuously
+                        kc.run();       
+
+                        //consume every 10s
+                        // kc.run10s();
                     }catch(Exception e){
                         e.printStackTrace();
                     }                            
@@ -40,9 +44,9 @@ public class Kafka {
                 case "producer":
                 default:
                     KafkaProducerDemo kp = new KafkaProducerDemo();
-                    kp.run();
+                    // kp.run();
 
-                    kp.async_send();
+                    kp.async_send10s();
                     break;
             }
         }

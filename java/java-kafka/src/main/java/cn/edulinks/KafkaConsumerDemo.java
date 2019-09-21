@@ -25,6 +25,7 @@ public class KafkaConsumerDemo {
         return consumer;
     }
 
+    // 持续不断的消费数据
     public static void run() throws InterruptedException {
         final Consumer<Long, String> consumer = createConsumer();
         final int giveUp = 100; int noRecordsCount = 0;
@@ -38,16 +39,19 @@ public class KafkaConsumerDemo {
                 else continue;
             }
 
+            // int i = 0;
             consumerRecords.forEach(record -> {
+                // i = i + 1;
                 System.out.printf("Consumer Record:(%d, %s, %d, %d)\n",
                         record.key(), record.value(),
                         record.partition(), record.offset());
             });
 
+            // System.out.println("Consumer Records " + i);
             consumer.commitAsync();
         }
 
         consumer.close();
         System.out.println("Kafka Consumer Exited");
     }    
-}
+} 
