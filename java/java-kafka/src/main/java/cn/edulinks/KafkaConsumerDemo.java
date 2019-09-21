@@ -1,12 +1,16 @@
 package cn.edulinks;
 
-import org.apache.kafka.clients.consumer.*;
+import java.util.Collections;
+import java.util.Properties;
+
 import org.apache.kafka.clients.consumer.Consumer;
+import org.apache.kafka.clients.consumer.ConsumerConfig;
+import org.apache.kafka.clients.consumer.ConsumerRecords;
+import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.apache.kafka.common.serialization.LongDeserializer;
 import org.apache.kafka.common.serialization.StringDeserializer;
 
-import java.util.Collections;
-import java.util.Properties;
+import kafka.api.OffsetRequest;
 
 public class KafkaConsumerDemo {
     private final static String TOPIC = "tst";
@@ -21,13 +25,19 @@ public class KafkaConsumerDemo {
 
         final Consumer<Long, String> consumer = new KafkaConsumer<>(props);
 
-        consumer.subscribe(Collections.singletonList(TOPIC));
         return consumer;
+    }
+
+    //获取某个Topic的分区数量
+    public static void getPartitionsForTopic(){
+        final Consumer<Long, String> consumer = createConsumer();
+        // System.out.println(consumer.partitionsFor(TOPIC));
     }
 
     // 持续不断的消费数据
     public static void run() throws InterruptedException {
         final Consumer<Long, String> consumer = createConsumer();
+        consumer.subscribe(Collections.singletonList(TOPIC));
         final int giveUp = 100; int noRecordsCount = 0;
 
         while(true){
