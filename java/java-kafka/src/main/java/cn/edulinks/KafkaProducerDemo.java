@@ -63,25 +63,30 @@ public class KafkaProducerDemo {
                 final CountDownLatch countDownLatch = new CountDownLatch(100);
 
                 try {
-                    for (long index = time; index < time + 100; index++){
-                        final ProducerRecord<Long, String> record = new ProducerRecord<>(TOPIC, index, "Hello i'am " + index);
-                        producer.send(record, (metadata, exception) -> {
-                            long elapsedTime = System.currentTimeMillis() - time;
-                            if(metadata != null){
-                                System.out.printf("sent record(key=%s value=%s) " +
-                                "meta(partition=%d, offset=%d) time=%d\n",
-                                record.key(), record.value(), metadata.partition(),
-                                metadata.offset(), elapsedTime);
-                            }else{
-                                exception.printStackTrace();
+                    while(true){
+                        try {
+                            Thread.sleep(10000);
+                            for (long index = time; index < time + 100; index++){
+                                final ProducerRecord<Long, String> record = new ProducerRecord<>(TOPIC, index, "Hello i'am " + index);
+                                producer.send(record, (metadata, exception) -> {
+                                    long elapsedTime = System.currentTimeMillis() - time;
+                                    if(metadata != null){
+                                        System.out.printf("sent record(key=%s value=%s) " +
+                                        "meta(partition=%d, offset=%d) time=%d\n",
+                                        record.key(), record.value(), metadata.partition(),
+                                        metadata.offset(), elapsedTime);
+                                    }else{
+                                        exception.printStackTrace();
+                                    }
+                                    countDownLatch.countDown();
+                                });               
                             }
-                            countDownLatch.countDown();
-                        });               
+                            countDownLatch.await(25, TimeUnit.SECONDS);
+                        }catch(Exception e){
+                            e.printStackTrace();
+                        }
                     }
-                    countDownLatch.await(25, TimeUnit.SECONDS);
                 }catch(Exception e){
-                    e.printStackTrace();
-                }finally{
                     producer.flush();
                     producer.close();
                 }
