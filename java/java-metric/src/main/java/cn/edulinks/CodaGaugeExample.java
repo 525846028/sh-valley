@@ -5,9 +5,10 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import com.codahale.metrics.ConsoleReporter;
+import com.codahale.metrics.*;
 
 public class CodaGaugeExample {
+    static final MetricRegistry metrics = new MetricRegistry();
     private List<String> stringList = new LinkedList<String>();
     Gauge<Integer> gauge = Metrics.newGauge(GaugeExample.class, "list-size-gauge", new Gauge<Integer>(){
         @Override
