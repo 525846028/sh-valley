@@ -47,14 +47,6 @@ public class Kafka {
                     KafkaProducerDemo kp = new KafkaProducerDemo();
                     // kp.run();
                     kp.async_send10s();
-
-                    KafkaProducerDemo kp1 = new KafkaProducerDemo();
-                    // kp.run();
-                    kp1.async_send10s();
-
-                    KafkaProducerDemo kp2 = new KafkaProducerDemo();
-                    // kp.run();
-                    kp2.async_send10s();
                     break;
             }
         }
