@@ -1,12 +1,14 @@
 package cn.edulinks;
 
 import java.util.Collections;
+import java.util.List;
 import java.util.Properties;
 
 import org.apache.kafka.clients.consumer.Consumer;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
+import org.apache.kafka.common.PartitionInfo;
 import org.apache.kafka.common.serialization.LongDeserializer;
 import org.apache.kafka.common.serialization.StringDeserializer;
 
@@ -31,6 +33,12 @@ public class KafkaConsumerDemo {
     //获取某个Topic的分区数量
     public static void getPartitionsForTopic(){
         final Consumer<Long, String> consumer = createConsumer();
+        
+        List<PartitionInfo> partitionInfos = consumer.partitionsFor(TOPIC);
+        System.out.println("Get the partition info as below:");
+        partitionInfos.forEach(str -> {
+            System.out.println(str);
+        });
         // System.out.println(consumer.partitionsFor(TOPIC));
     }
 
