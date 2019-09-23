@@ -11,7 +11,7 @@ import org.apache.kafka.common.serialization.LongSerializer;
 import org.apache.kafka.common.serialization.StringSerializer;
 
 public class KafkaProducerDemo {
-    private final static String TOPIC = "tst";
+    private final static String TOPIC = "test";
     private final static String BOOTSTRAP_SERVERS = "localhost:9092";
 
     // 同步发送数据到Kafka

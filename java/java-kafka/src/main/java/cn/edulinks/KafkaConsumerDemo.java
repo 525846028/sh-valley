@@ -1,5 +1,6 @@
 package cn.edulinks;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
@@ -14,10 +15,10 @@ import org.apache.kafka.common.TopicPartition;
 import org.apache.kafka.common.serialization.LongDeserializer;
 import org.apache.kafka.common.serialization.StringDeserializer;
 
-import kafka.api.OffsetRequest;
+// import kafka.api.OffsetRequest;
 
 public class KafkaConsumerDemo {
-    private final static String TOPIC = "tst";
+    private final static String TOPIC = "test";
     private final static String BOOTSTRAP_SERVERS = "localhost:9092";
 
     private static Consumer<Long, String> createConsumer() {
@@ -38,12 +39,17 @@ public class KafkaConsumerDemo {
 
         Collection<PartitionInfo> partitionInfos = consumer.partitionsFor(TOPIC);
         System.out.println("Get the partition info as below:");
+        List<TopicPartition> tp =new ArrayList<TopicPartition>();
         partitionInfos.forEach(str -> {
             System.out.println(str);
 
             System.out.println(str.partition());
+            tp.add(new TopicPartition(TOPIC,str.partition()));
+            consumer.assign(tp);
 
-            // System.out.println(consumer.seekToEnd(partitionInfos));
+            consumer.seekToEnd(tp);
+            // System.out.println(tp);
+            System.out.println(consumer.position(new TopicPartition(TOPIC, str.partition())));
             // System.out.println("Partition " + str.partition() + " 's latest offset is '" + consumer.position(str.partition()));
         });
 
