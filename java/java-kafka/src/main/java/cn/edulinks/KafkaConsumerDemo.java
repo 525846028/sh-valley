@@ -41,16 +41,14 @@ public class KafkaConsumerDemo {
         System.out.println("Get the partition info as below:");
         List<TopicPartition> tp =new ArrayList<TopicPartition>();
         partitionInfos.forEach(str -> {
+            System.out.println("Partition Info:");
             System.out.println(str);
 
-            System.out.println(str.partition());
             tp.add(new TopicPartition(TOPIC,str.partition()));
             consumer.assign(tp);
-
             consumer.seekToEnd(tp);
-            // System.out.println(tp);
-            System.out.println(consumer.position(new TopicPartition(TOPIC, str.partition())));
-            // System.out.println("Partition " + str.partition() + " 's latest offset is '" + consumer.position(str.partition()));
+
+            System.out.println("Partition " + str.partition() + " 's latest offset is '" + consumer.position(new TopicPartition(TOPIC, str.partition())));
         });
 
         // Collections<Partition> c = new Collections(str.partition());
