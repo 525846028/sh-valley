@@ -1,5 +1,6 @@
 package cn.edulinks;
 
+import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Properties;
@@ -9,6 +10,7 @@ import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.apache.kafka.common.PartitionInfo;
+import org.apache.kafka.common.TopicPartition;
 import org.apache.kafka.common.serialization.LongDeserializer;
 import org.apache.kafka.common.serialization.StringDeserializer;
 
@@ -18,7 +20,7 @@ public class KafkaConsumerDemo {
     private final static String TOPIC = "tst";
     private final static String BOOTSTRAP_SERVERS = "localhost:9092";
 
-    private static Consumer<Long, String> createConsumer(){
+    private static Consumer<Long, String> createConsumer() {
         final Properties props = new Properties();
         props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, BOOTSTRAP_SERVERS);
         props.put(ConsumerConfig.GROUP_ID_CONFIG, "KafkaExampleConsumer");
@@ -30,18 +32,18 @@ public class KafkaConsumerDemo {
         return consumer;
     }
 
-    //获取某个Topic的分区数量
-    public static void getPartitionsForTopic(){
+    // 获取某个Topic的分区数量
+    public static void getPartitionsForTopic() {
         final Consumer<Long, String> consumer = createConsumer();
-        
-        List<PartitionInfo> partitionInfos = consumer.partitionsFor(TOPIC);
+
+        Collection<PartitionInfo> partitionInfos = consumer.partitionsFor(TOPIC);
         System.out.println("Get the partition info as below:");
         partitionInfos.forEach(str -> {
             System.out.println(str);
 
             System.out.println(str.partition());
 
-            consumer.seekToEnd(partitionInfos);
+            // System.out.println(consumer.seekToEnd(partitionInfos));
             // System.out.println("Partition " + str.partition() + " 's latest offset is '" + consumer.position(str.partition()));
         });
 

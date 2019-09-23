@@ -34,7 +34,7 @@ public class Kafka {
                         KafkaConsumerDemo kc = new KafkaConsumerDemo();
                         //consume continuously
                         kc.getPartitionsForTopic();
-                        kc.run();       
+                        // kc.run();       
 
                         //consume every 10s
                         // kc.run10s();
