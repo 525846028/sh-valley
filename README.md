@@ -1,8 +1,8 @@
 # Share Valley 共享山谷
 
-This repository is used to keep my learning progress. Welcome cotact me to get more points.
+This repository is used to keep my example projects. Welcome contact me to get more points.
 
-这个仓库用来记录自己学习新内容的笔记，包括但不限于shell、java、python等等。欢迎大家与我一起沟通讨论。
+这个仓库用来记录自己示例工程代码，包括但不限于shell、java、python等等。欢迎大家与我一起沟通讨论。
 
 # Contact
 
