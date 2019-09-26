@@ -33,7 +33,7 @@ public class KafkaConsumerDemo {
         return consumer;
     }
 
-    // 获取某个Topic的分区数量
+    // 获取某个Topic的所有分区以及分区最新的Offset
     public static void getPartitionsForTopic() {
         final Consumer<Long, String> consumer = createConsumer();
 
@@ -50,9 +50,6 @@ public class KafkaConsumerDemo {
 
             System.out.println("Partition " + str.partition() + " 's latest offset is '" + consumer.position(new TopicPartition(TOPIC, str.partition())));
         });
-
-        // Collections<Partition> c = new Collections(str.partition());
-        // System.out.println(consumer.partitionsFor(TOPIC));
     }
 
     // 持续不断的消费数据
