@@ -40,7 +40,7 @@ public final class StreamingKafka {
 
         SparkConf sparkConf = new SparkConf().setAppName("StreamingKafka");
         JavaSparkContext sc = new JavaSparkContext(sparkConf);
-        sc.setLogLevel("WARN");
+        sc.setLogLevel("DEBUG");
         JavaStreamingContext jssc = new JavaStreamingContext(sc, Durations.seconds(2));
 
         //需要消费的TOPIC列表

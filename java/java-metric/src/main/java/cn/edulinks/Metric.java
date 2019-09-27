@@ -9,12 +9,17 @@ public class Metric {
     public static void main(String[] args){
         
         System.out.println("Welcome use metrics example!");
-        GaugeExample ge = new GaugeExample();
-        ge.run();
+        // GaugeExample ge = new GaugeExample();
+        // ge.run();
 
         CounterExample ce = new CounterExample();
         ce.run();
 
-
+        try {
+            CodaMeterExample me = new CodaMeterExample();
+            me.run();    
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }
 }
