@@ -1,4 +1,4 @@
-# Share Valley 共享山谷
+#Share Valley 共享山谷
 
 This repository is used to keep my example projects. Welcome contact me to get more points.
 
@@ -15,6 +15,10 @@ Thanks!
 ![](https://images2018.cnblogs.com/blog/39469/201807/39469-20180710163655709-89635310.png)
 
 [TOC]
+
+## Java 相关案例
+
+[Metrics包的使用方法]()
 
 ## Kafka 相关案例
 
