@@ -14,6 +14,32 @@ public class KafkaProducerDemo {
     private final static String TOPIC = "test";
     private final static String BOOTSTRAP_SERVERS = "localhost:9092";
 
+    //生成APM样例的报文数据
+    public String getApmLog(){
+        //Sample: app<1> trn<123> st<timestamp> tc<A001> cos<105>
+        Map <Integer, String> app_map = new HashMap<>();
+        app_map.put(1, "APM");
+        app_map.put(2, "FASTPAY");
+        app_map.put(3, "N-SDD");
+        app_map.put(4, "N-CCSVC");
+        app_map.put(5, "N-RCC");
+
+        Map <Integer, String> tc_map = new HashMap<>();
+        tc_map.put(1, "TC0001");
+        tc_map.put(2, "TC0002");
+        tc_map.put(3, "TC0003");
+        tc_map.put(4, "TC0004");
+        tc_map.put(5, "TC0005");
+
+        //获取随机数
+        Random r = new Random();
+        r.nextInt(10);
+
+        return "app<" + app_map.get(r.nextInt(5)) + "> trn<" + r.nextInt(100000) + "> st<" 
+            + System.currentTimeMillis() + "> tc<" + tc_map.get(r.nextInt(5)) + "> cos<" 
+            + r.nextInt(2000) + ">";
+    }
+
     // 同步发送数据到Kafka
     public void run(){
         System.out.println("Kafka Producer Running.");
@@ -29,7 +55,7 @@ public class KafkaProducerDemo {
 
         try {
             for (long index = time; index < time + 100; index++){
-                final ProducerRecord<Long, String> record = new ProducerRecord<>(TOPIC, index, "Hello i'am " + index);
+                final ProducerRecord<Long, String> record = new ProducerRecord<>(TOPIC, index, this.getApmLog());
                 RecordMetadata metadata = producer.send(record).get();
                 
                 long elapsedTime = System.currentTimeMillis() - time;
