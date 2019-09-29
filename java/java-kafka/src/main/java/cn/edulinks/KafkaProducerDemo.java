@@ -87,13 +87,14 @@ public class KafkaProducerDemo {
                 Producer<Long, String> producer = new KafkaProducer<>(props);
                 long time = System.currentTimeMillis();
                 final CountDownLatch countDownLatch = new CountDownLatch(100);
+                ApmLogGenerator log_generator = new ApmLogGenerator();
 
                 try {
                     while(true){
                         try {
                             Thread.sleep(10000);
                             for (long index = time; index < time + 100; index++){
-                                final ProducerRecord<Long, String> record = new ProducerRecord<>(TOPIC, index, "Hello i'am " + index);
+                                final ProducerRecord<Long, String> record = new ProducerRecord<>(TOPIC, index, log_generator.getLog());
                                 producer.send(record, (metadata, exception) -> {
                                     long elapsedTime = System.currentTimeMillis() - time;
                                     if(metadata != null){
