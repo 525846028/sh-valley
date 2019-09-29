@@ -45,8 +45,8 @@ public class Kafka {
                 case "producer":
                 default:
                     KafkaProducerDemo kp = new KafkaProducerDemo();
-                    // kp.run();
-                    kp.async_send10s();
+                    kp.run();
+                    // kp.async_send10s();
                     break;
             }
         }

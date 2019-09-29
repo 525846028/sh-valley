@@ -11,7 +11,7 @@ import org.apache.kafka.common.serialization.LongSerializer;
 import org.apache.kafka.common.serialization.StringSerializer;
 
 public class KafkaProducerDemo {
-    private final static String TOPIC = "test";
+    private final static String TOPIC = "test001";
     private final static String BOOTSTRAP_SERVERS = "localhost:9092";
 
     //生成APM样例的报文数据
@@ -35,8 +35,8 @@ public class KafkaProducerDemo {
         Random r = new Random();
         r.nextInt(10);
 
-        return "app<" + app_map.get(r.nextInt(5)) + "> trn<" + r.nextInt(100000) + "> st<" 
-            + System.currentTimeMillis() + "> tc<" + tc_map.get(r.nextInt(5)) + "> cos<" 
+        return "app<" + app_map.get(r.nextInt(5)+1) + "> trn<" + r.nextInt(100000) + "> st<" 
+            + System.currentTimeMillis() + "> tc<" + tc_map.get(r.nextInt(5)+1) + "> cos<" 
             + r.nextInt(2000) + ">";
     }
 
