@@ -32,11 +32,13 @@ public final class StreamingKafka {
         String topics = "test";
         String groupid = "kafkaConsumeGroupTest";
 
-        // if( args.length < 3){
-        //     System.out.println("Please enter the right parameters.");
-
-        //     System.exit(1);
-        // }
+        if (args.length < 2) {
+            System.err.println("Usage: StreamingKafka <brokerlist> <topic>");
+            System.exit(1);
+        }else{
+            brokers = args[0];
+            topics = args[1];
+        }
 
         SparkConf sparkConf = new SparkConf().setAppName("StreamingKafka");
         JavaSparkContext sc = new JavaSparkContext(sparkConf);
