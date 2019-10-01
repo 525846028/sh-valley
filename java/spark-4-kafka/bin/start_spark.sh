@@ -10,5 +10,5 @@ APP_JAR=/Users/rousseau/Projects/sh-valley/java/spark-4-kafka/target/KafkaTest-0
 $SPARK_HOME/bin/spark-submit \
 --conf spark.executor.extraClassPath=$SPARK_LIB \
 --conf spark.driver.extraClassPath=$SPARK_LIB \
---class StreamingKafka $APP_JAR
+--class StreamingKafka $APP_JAR localhost:9092 test001
 
