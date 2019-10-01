@@ -9,6 +9,7 @@ APP_JAR=/Users/rousseau/Projects/sh-valley/java/spark-3-streaming/target/streami
 
 # 使用前需使用nc命令在另一个Term窗口执行 nc -lk 3333 命令
 $SPARK_HOME/bin/spark-submit \
+--master spark://localhost:7077 \
 --conf spark.executor.extraClassPath=$SPARK_LIB \
 --conf spark.driver.extraClassPath=$SPARK_LIB \
 --class StreamingProject $APP_JAR localhost 3333
