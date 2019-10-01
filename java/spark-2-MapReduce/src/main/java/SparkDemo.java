@@ -18,7 +18,8 @@ public class SparkDemo {
         JavaSparkContext sc = null;
         try {
             //初始化JavaSparkContext
-            SparkConf conf = new SparkConf().setAppName(appName).setMaster(master);
+            // SparkConf conf = new SparkConf().setAppName(appName).setMaster(master);
+            SparkConf conf = new SparkConf().setAppName(appName);
             sc = new JavaSparkContext(conf);
 
             // 生成数据源
