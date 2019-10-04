@@ -11,7 +11,7 @@ public class CodaMeterExample {
     public static void run() throws InterruptedException{
         final MetricRegistry registry = new MetricRegistry();
 
-        System.out.println("This is Counter Example!");
+        System.out.println("This is Coda Meter Example!");
 
         ConsoleReporter report = ConsoleReporter.forRegistry(registry)
             .convertRatesTo(TimeUnit.SECONDS)
