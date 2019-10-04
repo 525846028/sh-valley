@@ -10,24 +10,36 @@ public class Metric {
      * Uasge: java Metric method
      */
     public static void main(String[] args){
-        
+
         System.out.println("Welcome use metrics example!");
         // GaugeExample ge = new GaugeExample();
         // ge.run();
 
         if(args.length < 1){
             System.out.println("Usage: Metric [method: counter|meter|gauge|histgram");
-            // System.exit();
+            System.exit(1);
+        }else{
+            String user_choice = args[0];
         }
 
-        CounterExample ce = new CounterExample();
-        ce.run();
-
-        try {
-            CodaMeterExample me = new CodaMeterExample();
-            me.run();    
-        }catch(Exception e){
-            e.printStackTrace();
+        switch (user_choice) {
+            case "counter":
+                CounterExample ce = new CounterExample();
+                ce.run();                    
+                break;
+            case "meter":
+                try {
+                    CodaMeterExample me = new CodaMeterExample();
+                    me.run();    
+                }catch(Exception e){
+                    e.printStackTrace();
+                }
+                break;
+            case "gauge":
+                break;
+            default:
+                break;
         }
+
     }
 }
