@@ -45,7 +45,7 @@ public class Metric {
             // java -cp lib/metrics-core-4.0.5.jar:lib/slf4j-api-1.7.2.jar:target/learn-metrics-1.0.jar:lib/log4j-1.2.12.jar:./lib/slf4j-simple-1.7.28.jar cn.edulinks.Metric gauge
                 try{
                     CodaGaugeExample cg = new CodaGaugeExample();
-                    cg.run(new MetricRegistry(), "CodaGuagueExample");
+                    cg.run(new MetricRegistry(), "stringList");
                 }catch(Exception e){
                     e.printStackTrace();
                 }

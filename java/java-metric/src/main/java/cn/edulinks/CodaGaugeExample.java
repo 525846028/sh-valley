@@ -25,11 +25,12 @@ public class CodaGaugeExample {
 
     public void run(MetricRegistry metrics, String name){
         System.out.println("GaugeExample running...");
-        this.stringList = new LinkedList<String>();
+        // this.stringList = new LinkedList<String>();
         metrics.register(MetricRegistry.name(CodaGaugeExample.class, name, "size"),
             new Gauge<Integer>(){
                 @Override
                 public Integer getValue(){
+                    System.out.println("Call Gauge Internal");
                     return stringList.size();
                 }
             });
@@ -41,7 +42,7 @@ public class CodaGaugeExample {
             try {
                 ge.inputElement(String.valueOf(i));
                 // System.out.println(String.valueOf(i));
-                // System.out.println(ge.stringList.size());
+                System.out.println(ge.stringList.size());
                 Thread.sleep(1000);    
             }catch(Exception e){
                 e.printStackTrace();
