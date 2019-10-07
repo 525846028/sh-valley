@@ -36,6 +36,11 @@ public class Metric {
                 }
                 break;
             case "gauge":
+                try{
+
+                }catch(Exception e){
+                    e.printStackTrace();
+                }
                 break;
             default:
                 break;
