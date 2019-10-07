@@ -2,6 +2,10 @@ package cn.edulinks;
 // //Metric examples by shiqiang
 
 import cn.edulinks.GaugeExample.*;
+
+import com.codahale.metrics.*;
+// import com.codahale.metrics.MetricRegistry;
+
 import cn.edulinks.CounterExample.*;
 
 public class Metric {
@@ -39,7 +43,7 @@ public class Metric {
             case "gauge":
                 try{
                     CodaGaugeExample cg = new CodaGaugeExample();
-                    cg.run(null, "CodaGuagueExample");
+                    cg.run(new MetricRegistry(), "CodaGuagueExample");
                 }catch(Exception e){
                     e.printStackTrace();
                 }

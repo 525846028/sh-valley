@@ -36,7 +36,7 @@ public class CodaGaugeExample {
         ConsoleReporter reporter = ConsoleReporter.forRegistry(metrics).convertRatesTo(TimeUnit.SECONDS).convertDurationsTo(TimeUnit.MICROSECONDS).build();
         reporter.start(1, TimeUnit.SECONDS);
 
-        GaugeExample ge = new GaugeExample();
+        CodaGaugeExample ge = new CodaGaugeExample();
         for(int i = 0; i < 10; i++){
             try {
                 ge.inputElement(String.valueOf(i));
