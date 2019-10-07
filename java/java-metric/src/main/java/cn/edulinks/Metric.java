@@ -10,6 +10,7 @@ public class Metric {
      * Uasge: java Metric method
      */
     public static void main(String[] args){
+        String user_choice = "";
 
         System.out.println("Welcome use metrics example!");
         // GaugeExample ge = new GaugeExample();
@@ -19,7 +20,7 @@ public class Metric {
             System.out.println("Usage: Metric [method: counter|meter|gauge|histgram");
             System.exit(1);
         }else{
-            String user_choice = args[0];
+            user_choice = args[0];
         }
 
         switch (user_choice) {
@@ -37,12 +38,14 @@ public class Metric {
                 break;
             case "gauge":
                 try{
-
+                    CodaGaugeExample cg = new CodaGaugeExample();
+                    cg.run(null, "CodaGuagueExample");
                 }catch(Exception e){
                     e.printStackTrace();
                 }
                 break;
             default:
+                System.out.println("No option are avaliable for your input.");
                 break;
         }
 
