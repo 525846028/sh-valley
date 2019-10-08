@@ -85,6 +85,14 @@ public class Metric {
                     e.printStackTrace();
                 }
                 break;
+            case "timer":
+                try{
+                    CodaTimerExample ct = new CodaTimerExample();
+                    ct.run();
+                }catch(Exception e){
+                    e.printStackTrace();
+                }
+                break;
             default:
                 System.out.println("No option are avaliable for your input.");
                 break;
