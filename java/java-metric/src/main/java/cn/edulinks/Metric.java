@@ -66,6 +66,17 @@ public class Metric {
                     e.printStackTrace();
                 }
                 break;
+            case "ccounter":
+            // Command
+            // java -cp lib/metrics-core-4.0.5.jar:lib/slf4j-api-1.7.2.jar:target/learn-metrics-1.0.jar:lib/log4j-1.2.12.jar:./lib/slf4j-simple-1.7.28.jar cn.edulinks.Metric ccounter
+    
+                try{
+                    CodaCounterExample cc = new CodaCounterExample();
+                    cc.run();
+                }catch(Exception e){
+                    e.printStackTrace();
+                }
+                break;
             default:
                 System.out.println("No option are avaliable for your input.");
                 break;
