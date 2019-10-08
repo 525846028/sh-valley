@@ -29,14 +29,15 @@ public class CodaTimerExample {
         ConsoleReporter reporter = ConsoleReporter.forRegistry(metrics).convertRatesTo(TimeUnit.SECONDS).convertDurationsTo(TimeUnit.MICROSECONDS).build();
         reporter.start(1, TimeUnit.SECONDS);
     
-        // try(final Timer.Context context = this.getResponseTime()){
-        for(int i = 0; i < 100000; i++){
-            try {
-                Thread.sleep(this.getRandNumber());    
-            }catch(Exception e){
-                e.printStackTrace();
-            }
-        }    
-        // }
+        try(final Timer.Context context = responseTimes.time()){
+            for(int i = 0; i < 100000; i++){
+                try {
+                    Thread.sleep(this.getRandNumber());    
+                    context.stop();
+                }catch(Exception e){
+                    e.printStackTrace();
+                }
+            }    
+        }
     }
 }
