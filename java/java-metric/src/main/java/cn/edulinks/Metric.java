@@ -25,6 +25,7 @@ public class Metric {
             System.exit(1);
         }else{
             user_choice = args[0];
+            System.out.println("User input : " + args[0]);
         }
 
         switch (user_choice) {
@@ -43,9 +44,24 @@ public class Metric {
             case "gauge":
             // Command
             // java -cp lib/metrics-core-4.0.5.jar:lib/slf4j-api-1.7.2.jar:target/learn-metrics-1.0.jar:lib/log4j-1.2.12.jar:./lib/slf4j-simple-1.7.28.jar cn.edulinks.Metric gauge
+                MetricRegistry metrics = new MetricRegistry();
+    
                 try{
-                    CodaGaugeExample cg = new CodaGaugeExample();
-                    cg.run(new MetricRegistry(), "stringList");
+                    CodaGaugeExample ge = new CodaGaugeExample(metrics, "stringList");
+                    for(int i = 0; i < 10; i++){
+                        try {
+                            ge.inputElement(String.valueOf(i));
+                            ge.run(metrics, "stringList");
+                            // System.out.println(String.valueOf(i));
+                            // System.out.println(ge.stringList.size());
+                            Thread.sleep(1000);    
+                        }catch(Exception e){
+                            e.printStackTrace();
+                        }
+                    }
+            
+                    // CodaGaugeExample cg = new CodaGaugeExample();
+                    // cg.run(new MetricRegistry(), "stringList");
                 }catch(Exception e){
                     e.printStackTrace();
                 }

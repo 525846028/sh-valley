@@ -18,14 +18,8 @@ public class CodaGaugeExample {
     //         return stringList.size();
     //     }
     // });
-
-    public void inputElement(String input){
-        stringList.add(input);
-    }
-
-    public void run(MetricRegistry metrics, String name){
-        System.out.println("GaugeExample running...");
-        // this.stringList = new LinkedList<String>();
+    public CodaGaugeExample(MetricRegistry metrics, String name){
+        this.stringList = new LinkedList<String>();
         metrics.register(MetricRegistry.name(CodaGaugeExample.class, name, "size"),
             new Gauge<Integer>(){
                 @Override
@@ -34,19 +28,17 @@ public class CodaGaugeExample {
                     return stringList.size();
                 }
             });
+    }
+
+    public void inputElement(String input){
+        stringList.add(input);
+    }
+
+    public void run(MetricRegistry metrics, String name){
+        System.out.println("GaugeExample running...");
+
         ConsoleReporter reporter = ConsoleReporter.forRegistry(metrics).convertRatesTo(TimeUnit.SECONDS).convertDurationsTo(TimeUnit.MICROSECONDS).build();
         reporter.start(1, TimeUnit.SECONDS);
 
-        CodaGaugeExample ge = new CodaGaugeExample();
-        for(int i = 0; i < 10; i++){
-            try {
-                ge.inputElement(String.valueOf(i));
-                // System.out.println(String.valueOf(i));
-                System.out.println(ge.stringList.size());
-                Thread.sleep(1000);    
-            }catch(Exception e){
-                e.printStackTrace();
-            }
-        }
     }
 }
