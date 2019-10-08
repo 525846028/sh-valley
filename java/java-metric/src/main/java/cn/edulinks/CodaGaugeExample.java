@@ -28,17 +28,16 @@ public class CodaGaugeExample {
                     return stringList.size();
                 }
             });
-    }
+
+            ConsoleReporter reporter = ConsoleReporter.forRegistry(metrics).convertRatesTo(TimeUnit.SECONDS).convertDurationsTo(TimeUnit.MICROSECONDS).build();
+            reporter.start(1, TimeUnit.SECONDS);
+        }
 
     public void inputElement(String input){
         stringList.add(input);
     }
 
     public void run(MetricRegistry metrics, String name){
-        System.out.println("GaugeExample running...");
-
-        ConsoleReporter reporter = ConsoleReporter.forRegistry(metrics).convertRatesTo(TimeUnit.SECONDS).convertDurationsTo(TimeUnit.MICROSECONDS).build();
-        reporter.start(1, TimeUnit.SECONDS);
-
+        System.out.println("\nGaugeExample running...");
     }
 }
