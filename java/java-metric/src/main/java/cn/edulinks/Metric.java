@@ -21,7 +21,7 @@ public class Metric {
         // ge.run();
 
         if(args.length < 1){
-            System.out.println("Usage: Metric [method: counter|meter|gauge|histgram");
+            System.out.println("Usage: Metric [method: ccounter|meter|gauge|histogram");
             System.exit(1);
         }else{
             user_choice = args[0];
@@ -73,6 +73,14 @@ public class Metric {
                 try{
                     CodaCounterExample cc = new CodaCounterExample();
                     cc.run();
+                }catch(Exception e){
+                    e.printStackTrace();
+                }
+                break;
+            case "histogram":
+                try{
+                    CodaHistogramsExample ch = new CodaHistogramsExample();
+                    ch.run();
                 }catch(Exception e){
                     e.printStackTrace();
                 }
