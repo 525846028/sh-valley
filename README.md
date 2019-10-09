@@ -18,7 +18,7 @@ Thanks!
 
 ## Java 相关案例
 
-[Metrics包的使用方法]()
+[Metrics包的使用方法](https://www.cnblogs.com/cocowool/p/java_metrics.html)
 
 ## Kafka 相关案例
 
