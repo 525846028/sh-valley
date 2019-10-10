@@ -66,6 +66,8 @@ public final class StreamingKafka {
             ConsumerStrategies.Subscribe(topicSet, kafkaParams)
             );
 
+        //区分JavaDStream, JavaPariDStream
+
         JavaPairDStream<String, Integer> counts = lines.flatMap(x -> Arrays.asList(x.value().toString().split(" ")).iterator())
             .mapToPair(x -> new Tuple2<String, Integer>(x, 1))
             .reduceByKey((x,y) -> x + y);
