@@ -41,6 +41,8 @@ public final class StreamingKafka {
         }
 
         SparkConf sparkConf = new SparkConf().setAppName("StreamingKafka");
+        //可以直接创建JavaStreamingContext，也可以从现有的JavaSparkContext中创建，本例是从现有创建
+        //JavaStreamingContext ssc = new JavaStreamingContext(sparkConf, Durations.seconds(2));
         JavaSparkContext sc = new JavaSparkContext(sparkConf);
         sc.setLogLevel("DEBUG");
         JavaStreamingContext jssc = new JavaStreamingContext(sc, Durations.seconds(2));
