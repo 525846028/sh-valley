@@ -8,7 +8,7 @@ import org.apache.spark.sql.Dataset;
 
 public class SimpleApp {
     public static void main(String[] args){
-        String logFile = "/Users/shiqiang/Desktop/shakespeare.txt";
+        String logFile = "/Users/rousseau/Desktop/shakespeare.txt";
 
         SparkSession spark = SparkSession.builder().appName("Simple Application").getOrCreate();
         Dataset<String> logData = spark.read().textFile(logFile).cache();
