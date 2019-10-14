@@ -10,4 +10,6 @@ APP_JAR=/Users/rousseau/Projects/sh-valley/java/spark-1-simpleApp/target/simple-
 $SPARK_HOME/bin/spark-submit \
 --conf spark.executor.extraClassPath=$SPARK_LIB \
 --conf spark.driver.extraClassPath=$SPARK_LIB \
+--master spark://localhost:7077 \
+--deploy-mode cluster \
 --class SimpleApp $APP_JAR
