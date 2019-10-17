@@ -8,7 +8,8 @@ import org.apache.spark.sql.Dataset;
 
 public class SimpleApp {
     public static void main(String[] args){
-        String logFile = "/Users/rousseau/Desktop/shakespeare.txt";
+        //文件路径要修改为本地对应路径
+        String logFile = "/Users/rousseau/Projects/sh-valley/java/spark-1-simpleApp/shakespear.txt";
 
         SparkSession spark = SparkSession.builder().appName("Simple Application").getOrCreate();
         Dataset<String> logData = spark.read().textFile(logFile).cache();
