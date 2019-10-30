@@ -10,7 +10,7 @@ public class SocketWindowWordCount {
         final int port;
         final String host;
         port = 9008;
-        host = "127.0.0.1";
+        host = "192.168.65.2";
 
         final StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
 
