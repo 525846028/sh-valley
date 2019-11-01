@@ -1,19 +1,30 @@
 version: "2.1"
-service:
+services:
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:6.6.2
+    hostname: elasticsearch
     expose: 
       - "9001"
     ports:
       - "9200:9200"
       - "9300:9300"
     environment:
-      - ES_JAVA_OPTS="-Xms256m -Xmx256m"
+      - cluster.name=single-node-cluster
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    networks:
+      - es-network
   kibana:
     image: docker.elastic.co/kibana/kibana:6.6.2
-    expose:
-      - ""
     ports:
       - "5601:5601"
     environment:
-      - ELASTICSEARCH_URL=http://172.16.61.200:9201
+      - ELASTICSEARCH_URL=http://elasticsearch:9200
+    networks:
+      - es-network
+networks:
+  es-network:
