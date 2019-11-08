@@ -26,15 +26,16 @@ public class FlinkKafka {
             properties
         );
 
-        final int port;
-        final String host;
-        port = 9008;
-        host = "192.168.65.2";
+        consumer010.assignTimestampsAndWatermarks(new CustomWatermarkEmitter());
 
         final StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
         // 使用EventTime进行数据处理
         env.setStreamTimeCharacteristic(TimeCharacteristic.EventTime);
 
+        DataStream<String> ds = env.addSource(consumer010);
+        ds.print();
+
+        env.execute("Flink Streaming Get Kafka Data");
         
     }
 
