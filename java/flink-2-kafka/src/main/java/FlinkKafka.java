@@ -1,14 +1,14 @@
-import org.apache.flink.api.common.functions.FlatMapFunction;
-import org.apache.flink.api.common.functions.ReduceFunction;
+import java.util.Properties;
+
+import org.apache.flink.api.common.functions.MapFunction;
+import org.apache.flink.streaming.api.TimeCharacteristic;
 import org.apache.flink.streaming.api.datastream.DataStream;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
-import org.apache.flink.streaming.api.windowing.time.Time;
-import org.apache.flink.streaming.api.TimeCharacteristic;
-import org.apache.flink.util.Collector;
-import org.apache.flink.streaming.connectors.kafka.FlinkFafkaConsumer10;
-// import org.apache.flink.streaming.util.serialization.SimpleStringSchema;
+import org.apache.flink.streaming.connectors.kafka.FlinkKafkaConsumer010;
+import org.apache.flink.streaming.util.serialization.SimpleStringSchema;
 
-import java.util.Properties;
+import java.util.HashMap;
+import java.util.Map;
 
 public class FlinkKafka {
     public static void main(String[] args) throws Exception {
@@ -26,13 +26,22 @@ public class FlinkKafka {
             properties
         );
 
-        consumer010.assignTimestampsAndWatermarks(new CustomWatermarkEmitter());
-
         final StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
-        // 使用EventTime进行数据处理
-        env.setStreamTimeCharacteristic(TimeCharacteristic.EventTime);
-
         DataStream<String> ds = env.addSource(consumer010);
+
+        // consumer010.assignTimestampsAndWatermarks(new CustomWatermarkEmitter());
+        // // 使用EventTime进行数据处理
+        // env.setStreamTimeCharacteristic(TimeCharacteristic.EventTime);
+
+        ds.rebalance().map(new MapFunction<String, String>(){
+            private static final long serialVersionUID = 1L;
+
+            @Override
+            public String map(String value) throws Exception {
+                return value;
+            }
+        });
+
         ds.print();
 
         env.execute("Flink Streaming Get Kafka Data");
