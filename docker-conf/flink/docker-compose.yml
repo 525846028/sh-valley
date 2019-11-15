@@ -6,6 +6,10 @@ services:
       - "6123"
     ports:
       - "8081:8081"
+    volumes:
+      - /Users/rousseau/Projects/sh-valley/java/flink-2-kafka/lib/flink-connector-kafka-0.10_2.11-1.9.0.jar:/opt/flink/lib/flink-connector-kafka-0.10_2.11-1.9.0.jar
+      - /Users/rousseau/Projects/sh-valley/java/flink-2-kafka/lib/flink-connector-kafka-0.9_2.11-1.9.0.jar:/opt/flink/lib/flink-connector-kafka-0.9_2.11-1.9.0.jar
+      - /Users/rousseau/Projects/sh-valley/java/flink-2-kafka/lib/flink-connector-kafka-base_2.11-1.9.0.jar:/opt/flink/lib/flink-connector-kafka-base_2.11-1.9.0.jar
     command: jobmanager
     environment:
       - JOB_MANAGER_RPC_ADDRESS=jobmanager
