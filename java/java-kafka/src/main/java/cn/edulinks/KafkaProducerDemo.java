@@ -12,7 +12,7 @@ import org.apache.kafka.common.serialization.StringSerializer;
 
 public class KafkaProducerDemo {
     private final static String TOPIC = "test001";
-    private final static String BOOTSTRAP_SERVERS = "localhost:9092";
+    private final static String BOOTSTRAP_SERVERS = "192.168.65.2:9092";
 
     //生成APM样例的报文数据
     public String getApmLog(){
