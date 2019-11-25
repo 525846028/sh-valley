@@ -18,8 +18,8 @@ public class FlinkKafka {
 
         Map properties = new HashMap();
 
-        properties.put("bootstrap.servers", "kafka:9092");
-        properties.put("zookeeper.connect", "zookeeper:2181");
+        properties.put("bootstrap.servers", "172.18.0.5:9092");
+        properties.put("zookeeper.connect", "172.18.0.4:2181");
         properties.put("group.id", "flink_kafka_consumer");
         properties.put("enable.auto.commit", "true");
         properties.put("auto.commit.interval.ms", "5000");

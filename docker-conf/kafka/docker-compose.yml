@@ -22,3 +22,7 @@ services:
     depends_on:
       - zookeeper
     container_name: kafka
+networks:
+  default:
+    external:
+      name: es-network
