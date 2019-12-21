@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  testhttpd:
+    image: httpd
+    container_name: testhttpd
+    ports:
+      - "80:80"
+    volumes:
+      - /Users/shiqiang/Projects/sh-valley/docker-conf/httpd/httpd.conf:/usr/local/apache2/conf/httpd.conf
+
