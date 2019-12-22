@@ -8,6 +8,8 @@ services:
     ports:
       - "9200:9200"
       - "9300:9300"
+    volumes:
+      - ~/Projects/sh-valley/docker-conf/elasticstack/es-kibana/elasticsearch.yml:/usr/share/
     environment:
       - cluster.name=single-node-cluster
       - bootstrap.memory_lock=true
@@ -23,7 +25,7 @@ services:
     ports:
       - "5601:5601"
     volumes:
-      - /Users/rousseau/Projects/sh-valley/docker-conf/elasticstack/es-kibana/kibana.xml:/usr/share/kibana/config/kibana.xml
+      - ~/Projects/sh-valley/docker-conf/elasticstack/es-kibana/kibana.xml:/usr/share/kibana/config/kibana.xml
     environment:
       - ELASTICSEARCH_URL=http://elasticsearch:9200
     networks:
