@@ -1,0 +1,4 @@
+network.host: 0.0.0.0
+
+bootstrap.memory_lock: false
+bootstrap.system_call_filter: false
