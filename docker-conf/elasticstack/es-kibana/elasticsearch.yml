@@ -1,4 +1,11 @@
-network.host: 0.0.0.0
+cluster.name: elasticsearch-single
+node.name: elasticsearch
+network.bind_host: 0.0.0.0
+
+node.master: true
+node.data: true
+
+cluster.initial_master_nodes: 127.0.0.1
 
 #内存参数
 #indices.memory.index_buffer_size: 20%
