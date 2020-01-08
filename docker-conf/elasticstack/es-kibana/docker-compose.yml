@@ -9,7 +9,7 @@ services:
       - "9200:9200"
       - "9300:9300"
     volumes:
-      - ~/Projects/sh-valley/docker-conf/elasticstack/es-kibana/elasticsearch.yml:/usr/share/
+      - ~/Projects/sh-valley/docker-conf/elasticstack/es-kibana/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
     environment:
       - cluster.name=single-node-cluster
       - bootstrap.memory_lock=true
