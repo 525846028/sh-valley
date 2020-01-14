@@ -19,7 +19,7 @@ services:
         soft: -1
         hard: -1
     networks:
-      - es-network
+      - es-cluster-network
   kibana:
     image: docker.elastic.co/kibana/kibana:6.7.0
     ports:
@@ -29,6 +29,12 @@ services:
     environment:
       - ELASTICSEARCH_URL=http://es-node1:9200
     networks:
-      - es-network
+      - es-cluster-network
 networks:
-  es-network:
+  es-cluster-network:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+      - subnet: 172.19.0.0/16
+        gateway: 172.19.0.1
