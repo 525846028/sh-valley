@@ -12,7 +12,7 @@ node.ingest: false
 bootstrap.memory_lock: true
 bootstrap.system_call_filter: false
 discovery.zen.ping.unicast.hosts: ["172.21.0.10:9300","172.21.0.11:9301","172.21.0.12:9302"]
-discovery.zen.minimum_master_nodes: 1
+discovery.zen.minimum_master_nodes: 2
 
 xpack.monitoring.enabled: true
 xpack.monitoring.exporters.my_remote.type: http
