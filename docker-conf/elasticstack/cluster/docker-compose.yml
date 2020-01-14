@@ -20,6 +20,46 @@ services:
         hard: -1
     networks:
       - es-cluster-network
+  es-node2:
+    image: docker.elastic.co/elasticsearch/elasticsearch:6.7.0
+    hostname: es-node2
+    expose:         #不会将端口暴露给容器外应用
+      - "9002"
+    ports:          #将端口暴露到宿主机中
+      - "9201:9201"
+      - "9301:9301"
+    volumes:
+      - ~/Projects/sh-valley/docker-conf/elasticstack/cluster/node2/es2.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+    environment:
+      - cluster.name=es-cluster
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms256m -Xmx256m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    networks:
+      - es-cluster-network
+  es-node3:
+    image: docker.elastic.co/elasticsearch/elasticsearch:6.7.0
+    hostname: es-node3
+    expose:         #不会将端口暴露给容器外应用
+      - "9003"
+    ports:          #将端口暴露到宿主机中
+      - "9202:9202"
+      - "9302:9302"
+    volumes:
+      - ~/Projects/sh-valley/docker-conf/elasticstack/cluster/node3/es3.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+    environment:
+      - cluster.name=es-cluster
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms256m -Xmx256m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    networks:
+      - es-cluster-network
   kibana:
     image: docker.elastic.co/kibana/kibana:6.7.0
     ports:
