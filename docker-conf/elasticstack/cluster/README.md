@@ -1,5 +1,3 @@
-[TOC]
-
 > 全部编排文件和配置文件可以访问我的[Github](https://github.com/cocowool/sh-valley/tree/master/docker-conf/elasticstack/cluster)，大家只要修改配置文件中的路径即可快速搭建一个3实例的ES集群和一个Kibana实例。
 
 ## 规划
@@ -149,6 +147,8 @@ $ curl http://localhost:9200/_cat/nodes
 ```
 
 后续使用过程中可以通过`docker-compose`命令启动、停止服务，如果不想保留相关的实例，可以使用`docker-compose down`关闭并删除容器。
+
+![](https://images2018.cnblogs.com/blog/39469/201807/39469-20180710163655709-89635310.png)
 
 ## 参考资料
 1. [elasticsearch document](https://www.elastic.co/guide/en/elasticsearch/reference/current/indexing-buffer.html)
