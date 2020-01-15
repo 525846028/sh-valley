@@ -19,7 +19,8 @@ services:
         soft: -1
         hard: -1
     networks:
-      - es-cluster-network
+      es-cluster-network:
+        ipv4_address: 172.21.0.10
   es-node2:
     image: docker.elastic.co/elasticsearch/elasticsearch:6.7.0
     hostname: es-node2
@@ -39,7 +40,8 @@ services:
         soft: -1
         hard: -1
     networks:
-      - es-cluster-network
+      es-cluster-network:
+        ipv4_address: 172.21.0.11
   es-node3:
     image: docker.elastic.co/elasticsearch/elasticsearch:6.7.0
     hostname: es-node3
@@ -59,7 +61,8 @@ services:
         soft: -1
         hard: -1
     networks:
-      - es-cluster-network
+      es-cluster-network:
+        ipv4_address: 172.21.0.12
   kibana:
     image: docker.elastic.co/kibana/kibana:6.7.0
     ports:
