@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  testnginx:
+    image: nginx
+    container_name: testnginx
+    ports:
+      - "80:80"
+#    volumes:
+#      - ~/Projects/sh-valley/docker-conf/httpd/httpd.conf:/usr/local/apache2/conf/httpd.conf
+
